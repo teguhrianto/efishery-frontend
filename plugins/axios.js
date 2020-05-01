@@ -1,3 +1,3 @@
-export default function ({ $axios, store }) {
-  // $axios.setHeader('Content-Type', 'application/json')
+export default function ({ $axios }) {
+  $axios.setHeader('Content-Type', 'application/json')
 }

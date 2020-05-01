@@ -1,20 +1,43 @@
 <template>
   <section>
     <div class="container">
-      <div class="row align-items-center">
+      <div class="logo">
+        <img src="./../assets/img/logo.png" alt="eFishery">
+      </div>
+      <div class="row align-items-center mb-4">
         <div class="col-md-auto">
-          <h5>Data Perikanan Indonesia</h5>
+          <h5 class="mb-2">
+            Data Harga Perikanan Indonesia
+          </h5>
         </div>
         <div class="col-md-auto ml-auto">
-          <!-- <nuxt-link class="btn btn-primary" :to="{name: 'add-list'}">
+          <nuxt-link class="btn btn-primary mb-2" :to="{name: 'add'}">
             Add New
-          </nuxt-link> -->
+          </nuxt-link>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card card--table">
+        <div class="card-header">
+          Filter
+        </div>
         <div class="card-body">
-          <b-table striped hover :items="lists" :fields="fields" show-empty />
+          <div class="table-responsive">
+            <b-table
+              striped
+              hover
+              :items="lists.slice(1)"
+              :fields="fields"
+              show-empty
+            >
+              <template v-slot:cell(no)="row">
+                {{ row.index+1 }}
+              </template>
+              <template v-slot:cell(price)="row">
+                {{ row.item.price | currency }}
+              </template>
+            </b-table>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +56,7 @@ export default {
   data () {
     return {
       // Field for table header
-      fields: ['komoditas', 'area_provinsi', 'area_kota', 'size', 'price', 'tgl_parsed'],
+      fields: ['no', 'komoditas', 'area_provinsi', 'area_kota', 'size', 'price', 'tgl_parsed'],
       items: []
     }
   },
