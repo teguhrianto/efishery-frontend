@@ -23,11 +23,13 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/theme.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/axios.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -51,6 +53,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/'
   },
   /*
   ** Build configuration

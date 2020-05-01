@@ -1,72 +1,51 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        efishery-frontend
-      </h1>
-      <h2 class="subtitle">
-        Data harga perikanan Indonesia
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-auto">
+          <h5>Data Perikanan Indonesia</h5>
+        </div>
+        <div class="col-md-auto ml-auto">
+          <!-- <nuxt-link class="btn btn-primary" :to="{name: 'add-list'}">
+            Add New
+          </nuxt-link> -->
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <b-table striped hover :items="lists" :fields="fields" show-empty />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import { mapActions, mapState } from 'vuex'
 export default {
-  components: {
-    Logo
+  // Get list data from store index
+  async asyncData ({ store }) {
+    await Promise.all([
+      store.dispatch('getListsData')
+    ])
+  },
+  data () {
+    return {
+      // Field for table header
+      fields: ['komoditas', 'area_provinsi', 'area_kota', 'size', 'price', 'tgl_parsed'],
+      items: []
+    }
+  },
+  computed: {
+    // Everytime request to API, the data will be saved in each store of vuex
+    // List data will be saved in State Lists
+    ...mapState({
+      lists: state => state.lists
+    })
+  },
+  methods: {
+    ...mapActions(['getListsData'])
   }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
