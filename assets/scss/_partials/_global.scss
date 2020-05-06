@@ -8,3 +8,18 @@ section{
   padding: 50px 0;
   position: relative;
 }
+
+.form-control{
+  &::-webkit-input-placeholder {
+    color: #a7aaab !important;
+  }
+  &::-moz-placeholder {
+      color: #a7aaab !important;
+  }
+  &::-ms-placeholder {
+      color: #a7aaab !important;
+  }
+  &::placeholder {
+      color: #a7aaab !important;
+  }
+}

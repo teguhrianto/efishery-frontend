@@ -3,6 +3,16 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
+          <b-alert v-model="showDismissibleAlert" :variant="failed === false ? 'success' : 'danger'" dismissible>
+            <div v-if="failed === true">
+              Opss! Data gagal ditambahkan!
+            </div>
+            <div v-if="failed === false">
+              Yes! Data telah berhasil ditambahkan! <nuxt-link to="/">
+                Lihat Data
+              </nuxt-link>
+            </div>
+          </b-alert>
           <form action="">
             <div class="row align-items-center mb-4">
               <div class="col-md-auto">
@@ -35,6 +45,7 @@
                     type="text"
                     class="form-control"
                     :class="{'is-invalid': errors.komoditas}"
+                    placeholder="Contoh: Patin"
                     required
                   >
 
@@ -154,6 +165,8 @@ export default {
   },
   data () {
     return {
+      failed: false,
+      showDismissibleAlert: false,
       provinces: '',
       lists: {
         uuid: uuid.v1(),
@@ -183,15 +196,16 @@ export default {
     },
     // When click submit button, this function will be running
     submit () {
-      // eslint-disable-next-line no-console
-      // console.log(JSON.parse(JSON.stringify(this.lists)))
       // Call function to saving data
       // If success, redirect to page lists
       this.storeListsData([JSON.parse(JSON.stringify(this.lists))])
         .then((result) => {
-          // eslint-disable-next-line no-console
-          console.log(result)
-          this.$router.push('/')
+          this.failed = false
+          this.showDismissibleAlert = true
+          // this.$router.push('/')
+        }).catch(() => {
+          this.failed = true
+          this.showDismissibleAlert = true
         })
     }
   }
