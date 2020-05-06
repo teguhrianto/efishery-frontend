@@ -2,6 +2,9 @@
 
 > Data harga perikanan Indonesia
 
+## Live Demo
+### [See live demo here](https://efishery-frontend.now.sh/)
+
 ## Screenshot Desktop & Mobile
 ![alt mockup](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mockup.jpg)
 
