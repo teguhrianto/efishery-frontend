@@ -4,30 +4,28 @@
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <form action="">
-            <div class="card">
-              <div class="card-header pb-1">
-                <div class="row align-items-center">
-                  <div class="col-md-auto">
-                    <h5 class="mb-2">
-                      Add Data
-                    </h5>
+            <div class="row align-items-center mb-4">
+              <div class="col-md-auto">
+                <h5 class="mb-2">
+                  Add Data
+                </h5>
+              </div>
+              <div class="col-md-auto ml-auto">
+                <div class="form-row">
+                  <div class="col-auto">
+                    <nuxt-link class="btn btn-outline-dark mb-2" to="/">
+                      Cancel
+                    </nuxt-link>
                   </div>
-                  <div class="col-md-auto ml-auto">
-                    <div class="form-row">
-                      <div class="col-auto">
-                        <nuxt-link class="btn btn-outline-dark mb-2" to="/">
-                          Cancel
-                        </nuxt-link>
-                      </div>
-                      <div class="col-auto">
-                        <button class="btn btn-primary mb-2" type="button" @click="submit">
-                          Save
-                        </button>
-                      </div>
-                    </div>
+                  <div class="col-auto">
+                    <button class="btn btn-primary mb-2" type="button" @click="submit">
+                      Save
+                    </button>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="card">
               <div class="card-body">
                 <div class="form-group">
                   <label for="komoditas">Komoditas</label>
@@ -51,18 +49,19 @@
                       <label for="provinsi">Area Provinsi</label>
                       <select
                         id="provinsi"
-                        v-model="lists.area_provinsi"
+                        v-model="provinces"
                         class="form-control custom-select"
                         required
+                        @change="getCities"
                       >
-                        <option :value="null" selected disabled>
+                        <option value="" selected disabled>
                           Pilih
                         </option>
                         <option v-for="(p, index) in areas" :key="index" :value="p">
                           {{ p.province }}
                         </option>
                       </select>
-                      <input v-model="lists.area_provinsi.province" type="text">
+                      <input v-model="lists.area_provinsi" type="hidden" class="form-control">
                       <p v-if="errors.area_provinsi" class="text-danger">
                         {{ errors.area_provinsi[0] }}
                       </p>
@@ -77,13 +76,13 @@
                         class="form-control custom-select"
                         :class="{'is-invalid': errors.area_kota}"
                         required
-                        :disabled="!lists.area_provinsi"
+                        :disabled="!provinces"
                       >
-                        <option :value="null" selected disabled>
+                        <option value="" selected disabled>
                           Pilih
                         </option>
-                        <option v-for="c in lists.area_provinsi.city" :key="c" :value="c">
-                          {{ c }}
+                        <option v-for="(city, index) in provinces.city" :key="index" :value="city">
+                          {{ city }}
                         </option>
                       </select>
                       <p v-if="errors.area_kota" class="text-danger">
@@ -95,7 +94,7 @@
                     <div class="form-group">
                       <label for="size">Size</label>
                       <select id="size" v-model="lists.size" class="form-control custom-select" :class="{'is-invalid': errors.size}" required>
-                        <option :value="null" selected disabled>
+                        <option value="" selected disabled>
                           Pilih
                         </option>
                         <option v-for="(item, index) in sizes" :key="index" :value="item.size">
@@ -155,10 +154,6 @@ export default {
   },
   data () {
     return {
-      // optionProvinces: [],
-      // optionCities: [],
-      // optionSizes: [],
-      // Variables to collect input form
       provinces: '',
       lists: {
         uuid: uuid.v1(),
@@ -182,18 +177,22 @@ export default {
   },
   methods: {
     ...mapActions(['storeListsData', 'getSizesData', 'getAreasData']),
+    getCities () {
+      this.lists.area_kota = ''
+      this.lists.area_provinsi = this.provinces.province
+    },
     // When click submit button, this function will be running
     submit () {
       // eslint-disable-next-line no-console
-      console.log(JSON.parse(JSON.stringify(this.lists)))
+      // console.log(JSON.parse(JSON.stringify(this.lists)))
       // Call function to saving data
       // If success, redirect to page lists
-      // this.storeListsData([JSON.parse(JSON.stringify(this.lists))])
-      //   .then((result) => {
-      //     // eslint-disable-next-line no-console
-      //     console.log(result)
-      //     this.$router.push('/')
-      //   })
+      this.storeListsData([JSON.parse(JSON.stringify(this.lists))])
+        .then((result) => {
+          // eslint-disable-next-line no-console
+          console.log(result)
+          this.$router.push('/')
+        })
     }
   }
 }

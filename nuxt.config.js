@@ -31,6 +31,7 @@ export default {
   */
   plugins: [
     '@/plugins/axios.js',
+    '@/plugins/date.js',
     { src: '@/plugins/currency.js', ssr: true }
   ],
   /*
