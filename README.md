@@ -2,6 +2,10 @@
 
 > Data harga perikanan Indonesia
 
+## Features
+1. Melihat dan mencari list data
+2. Menambahan Data
+
 ## Live Demo
 ### [See live demo here](https://efishery-frontend.now.sh/)
 
