@@ -3,13 +3,14 @@
 > Data harga perikanan Indonesia
 
 ## Screenshot Desktop
+### List Data
 ![alt desktop-list](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/desktop-list.png)
-
+### Form
 ![alt desktop-form](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/desktop-form.png) 
 
 ## Screenshot Mobile
 ![alt mobile-list](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-list.png)
- 
+
 ![alt mobile-form](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-form.png) 
 
 ## Build Setup
