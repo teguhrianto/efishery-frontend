@@ -15,21 +15,21 @@
           </b-alert>
           <form action="">
             <div class="row align-items-center mb-4">
-              <div class="col-md-auto">
+              <div class="col-md-auto text-md-left text-center">
                 <h5 class="mb-2">
-                  Add Data
+                  Tambah Data Baru
                 </h5>
               </div>
               <div class="col-md-auto ml-auto">
-                <div class="form-row">
+                <div class="form-row justify-content-md-start justify-content-center form-action">
                   <div class="col-auto">
                     <nuxt-link class="btn btn-outline-dark mb-2" to="/">
-                      Cancel
+                      Batalkan
                     </nuxt-link>
                   </div>
                   <div class="col-auto">
                     <button class="btn btn-primary mb-2" type="button" @click="submit">
-                      Save
+                      Simpan
                     </button>
                   </div>
                 </div>

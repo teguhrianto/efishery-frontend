@@ -2,14 +2,14 @@
   <section>
     <div class="container">
       <div class="row align-items-center mb-4">
-        <div class="col-md-auto">
+        <div class="col-md-auto text-md-left text-center">
           <h5 class="mb-2">
             Data Harga Perikanan Indonesia
           </h5>
         </div>
-        <div class="col-md-auto ml-auto">
-          <nuxt-link class="btn btn-primary mb-2" :to="{name: 'add'}">
-            Add New
+        <div class="col-md-auto ml-auto text-md-left text-center">
+          <nuxt-link class="btn btn-primary mb-2 btn-add" :to="{name: 'add'}">
+            + <span>Tambah Data Baru</span>
           </nuxt-link>
         </div>
       </div>
