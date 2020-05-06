@@ -9,9 +9,8 @@
 ![alt desktop-form](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/desktop-form.png) 
 
 ## Screenshot Mobile
-![alt mobile-list](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-list.png | width=360)
-
-![alt mobile-form](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-form.png | width=360) 
+<img src="https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-list.png" width="360">
+<img src="https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mobile-form.png" width="360">
 
 ## Build Setup
 
