@@ -12,3 +12,6 @@ Untuk tampilan form juga demikian, saya buat se simple mungkin.
 Untuk tampilan mobile ada sedikit penyesuaian,
 1. Button Add Data, saya buat fixed floating pojok kanan bawah, untuk memudahkan ketika akan menambah data
 2. Button pada halaman form, saya buat fixed bottom.
+
+## Screenshot Desktop & Mobile
+![alt mockup](https://raw.githubusercontent.com/teguhrianto/efishery-frontend/master/screenshot/mockup.jpg)
