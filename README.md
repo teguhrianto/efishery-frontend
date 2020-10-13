@@ -2,6 +2,8 @@
 
 > Data harga perikanan Indonesia
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/01f1ebdd-5ebb-4ac0-9fc2-e8ba42722c77/deploy-status)](https://app.netlify.com/sites/efishery-frontend-test/deploys)
+
 ## Features
 1. Melihat dan mencari list data
 2. Menambahan Data
